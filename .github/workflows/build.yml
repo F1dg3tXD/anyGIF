@@ -11,10 +11,10 @@ jobs:
     runs-on: windows-latest
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3  # Updated to the latest version
 
       - name: Set up Python
-        uses: actions/setup-python@v2
+        uses: actions/setup-python@v4  # Updated to the latest version
         with:
           python-version: '3.12'
 
@@ -27,7 +27,7 @@ jobs:
           pyinstaller --onefile --windowed --icon=res/appIcon.ico -n anyGIF main.py
 
       - name: Upload Windows artifact
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v3  # Updated to the latest version
         with:
           name: anyGIF-windows
           path: dist/anyGIF.exe
@@ -36,10 +36,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3  # Updated to the latest version
 
       - name: Set up Python
-        uses: actions/setup-python@v2
+        uses: actions/setup-python@v4  # Updated to the latest version
         with:
           python-version: '3.12'
 
@@ -52,7 +52,7 @@ jobs:
           pyinstaller --onefile --windowed --icon=res/appIcon.ico -n anyGIF main.py
 
       - name: Upload Linux artifact
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v3  # Updated to the latest version
         with:
           name: anyGIF-linux
           path: dist/anyGIF
@@ -62,7 +62,7 @@ jobs:
     needs: [build_windows, build_linux]  # Wait for the build jobs to finish
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3  # Updated to the latest version
 
       - name: Create Release
         id: create_release
