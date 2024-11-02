@@ -5,8 +5,16 @@ import subprocess
 import os
 import re
 
-# Path to ffmpeg executable
-FFMPEG_PATH = "./bin/ffmpeg"
+# Detect the executable path (where PyInstaller places bundled files)
+def resource_path(relative_path):
+    # If running as a bundled app, find path; otherwise, use script path
+    base_path = getattr(sys, '_MEIPASS', os.path.dirname(os.path.abspath(__file__)))
+    return os.path.join(base_path, relative_path)
+
+# Update paths
+FFMPEG_PATH = resource_path("bin/ffmpeg")
+icon_path = resource_path("res/appIcon.ico")
+
 
 # Function to convert video to GIF with progress
 def convert_to_gif():
@@ -72,7 +80,6 @@ root.title("anyGIF")
 root.configure(bg="#2E2E2E")
 
 # Set the application icon
-icon_path = "res/winIcon.ico"
 try:
     root.iconphoto(False, tk.PhotoImage(file=icon_path))
 except Exception as e:
