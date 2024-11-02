@@ -3,73 +3,87 @@ name: Build and Release
 on:
   push:
     tags:
-      - 'v*.*.*'  # Triggers on version tags, e.g., v1.0.0
-  workflow_dispatch:  # Allows manual triggering of the workflow
+      - 'v*.*.*'  # Triggers on version tags
+  workflow_dispatch:  # Allows manual triggering
 
 jobs:
-  build:
-    runs-on: ${{ matrix.os }}
-    strategy:
-      matrix:
-        os: [ubuntu-latest, windows-latest]  # Specify the OS for the build
-
+  build_windows:
+    runs-on: windows-latest
     steps:
-      - name: Checkout code
+      - name: Checkout repository
         uses: actions/checkout@v2
 
       - name: Set up Python
         uses: actions/setup-python@v2
         with:
-          python-version: '3.12'  # Set your required Python version
+          python-version: '3.12'
 
       - name: Install dependencies
         run: |
-          pip install -r requirements.txt  # Adjust as needed for your project
-          pip install pyinstaller  # Install PyInstaller
+          pip install -r requirements.txt
 
-      - name: Build the application
+      - name: Build executable
         run: |
-          if [[ "${{ runner.os }}" == "Windows" ]]; then
-            pyinstaller --onefile --windowed --icon=res/appIcon.ico -n anyGIF main.py
-          else
-            pyinstaller --onefile --windowed --icon=res/appIcon.ico -n anyGIF main.py
-          fi
+          pyinstaller --onefile --windowed --icon=res/appIcon.ico -n anyGIF main.py
 
-      - name: Archive artifacts
-        if: success()  # Only archive if the build was successful
+      - name: Upload Windows artifact
         uses: actions/upload-artifact@v2
         with:
-          name: anyGIF-${{ runner.os }}
-          path: dist/anyGIF.exe  # Change this to your specific executable name for Windows
-          path: dist/anyGIF  # Linux executable without extension
+          name: anyGIF-windows
+          path: dist/anyGIF.exe
 
-  release:
+  build_linux:
     runs-on: ubuntu-latest
-    needs: build
-    if: success()  # Only run if the build job succeeded
     steps:
-      - name: Checkout code
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.12'
+
+      - name: Install dependencies
+        run: |
+          pip install -r requirements.txt
+
+      - name: Build executable
+        run: |
+          pyinstaller --onefile --windowed --icon=res/appIcon.ico -n anyGIF main.py
+
+      - name: Upload Linux artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: anyGIF-linux
+          path: dist/anyGIF
+
+  create_release:
+    runs-on: ubuntu-latest
+    needs: [build_windows, build_linux]  # Wait for the build jobs to finish
+    steps:
+      - name: Checkout repository
         uses: actions/checkout@v2
 
       - name: Create Release
         id: create_release
         uses: softprops/action-gh-release@v1
         with:
-          tag_name: ${{ github.ref }}  # Use the version tag from the push
-          release_name: Release ${{ github.ref }}
-          body: |
-            Automatic release for version ${{ github.ref }}.
-          draft: false
-          prerelease: false
+          tag: ${{ github.ref }}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Upload Release Assets
+      - name: Upload Windows artifact to release
         uses: softprops/action-gh-release@v1
         with:
-          tag_name: ${{ github.ref }}
-          files: |
-            dist/anyGIF.exe
-            dist/anyGIF
+          tag: ${{ github.ref }}
+          files: dist/anyGIF.exe
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Upload Linux artifact to release
+        uses: softprops/action-gh-release@v1
+        with:
+          tag: ${{ github.ref }}
+          files: dist/anyGIF
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
