@@ -21,6 +21,7 @@ jobs:
       - name: Install dependencies
         run: |
           pip install -r requirements.txt
+          pip install pyinstaller  # Ensure PyInstaller is installed
 
       - name: Build executable
         run: |
@@ -46,6 +47,7 @@ jobs:
       - name: Install dependencies
         run: |
           pip install -r requirements.txt
+          pip install pyinstaller  # Ensure PyInstaller is installed
 
       - name: Build executable
         run: |
