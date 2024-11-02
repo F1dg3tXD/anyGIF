@@ -13,6 +13,10 @@ A UI-based program to convert any video file to a GIF using ffmpeg.
 
    It is really that basic.
 
+## Building Installer
+* Install [INNO Setup](https://jrsoftware.org/isinfo.php)
+* Run Build Installer build task.
+
 ## Contributing
 Any help is appreciated; UI themes and other improvements will be community-driven.
 
