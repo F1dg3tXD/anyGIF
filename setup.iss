@@ -1,10 +1,10 @@
 [Setup]
 AppName=anyGIF
-AppVersion=0.0.2b
+AppVersion=0.0.3a
 DefaultDirName={pf}\anyGIF
 DefaultGroupName=anyGIF
 OutputDir=.
-OutputBaseFilename=anyGIF_0_0_2b
+OutputBaseFilename=anyGIF_0_0_3a
 Compression=lzma
 SolidCompression=yes
 SetupIconFile=res\winIcon.ico

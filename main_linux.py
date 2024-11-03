@@ -6,7 +6,7 @@ import os
 import re
 
 # Path to ffmpeg executable
-FFMPEG_PATH = os.path.abspath("./bin/ffmpeg.exe")
+FFMPEG_PATH = os.path.abspath("./bin/ffmpeg")
 
 # Function to convert video to GIF with progress
 def convert_to_gif():
