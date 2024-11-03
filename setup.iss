@@ -1,26 +1,29 @@
 [Setup]
-; Basic information about the installer
 AppName=anyGIF
-AppVersion=0.0.2a
+AppVersion=0.0.2b
 DefaultDirName={pf}\anyGIF
 DefaultGroupName=anyGIF
-OutputBaseFilename=anyGIF_0_0_2a
+OutputDir=.
+OutputBaseFilename=anyGIF_0_0_2b
 Compression=lzma
 SolidCompression=yes
+SetupIconFile=res\winIcon.ico
 
 [Files]
-; The main executable
+Source: "bin\*"; DestDir: "{app}\bin"; Flags: ignoreversion recursesubdirs
 Source: "dist\anyGIF.exe"; DestDir: "{app}"; Flags: ignoreversion
-; Any additional files or folders to include
-Source: "dist\bin\*"; DestDir: "{app}\bin"; Flags: ignoreversion recursesubdirs
-Source: "dist\res\*"; DestDir: "{app}\res"; Flags: ignoreversion recursesubdirs
+Source: "res\appIcon.ico"; DestDir: "{app}"; Flags: ignoreversion
+Source: "redist\VC_redist.x64.exe"; DestDir: "{tmp}"; Flags: deleteafterinstall
 
 [Icons]
-; Add an icon on the desktop
-Name: "{commondesktop}\anyGIF"; Filename: "{app}\anyGIF.exe"
-; Add an icon in the Start menu
-Name: "{group}\anyGIF"; Filename: "{app}\anyGIF.exe"
+Name: "{commondesktop}\anyGIF"; Filename: "{app}\anyGIF.exe"; WorkingDir: "{app}"
+Name: "{userprograms}\anyGIF"; Filename: "{app}\anyGIF.exe"; WorkingDir: "{app}"
 
 [Run]
-; Optionally run the app after installation
-Filename: "{app}\anyGIF.exe"; Description: "Launch anyGIF"; Flags: nowait postinstall skipifsilent
+Filename: "{tmp}\VC_redist.x64.exe"; Parameters: "/quiet /install"; Check: NeedsVC
+
+[Code]
+function NeedsVC: Boolean;
+begin
+  Result := not RegKeyExists(HKLM, 'Software\Microsoft\VisualStudio\14.0\VC\Runtimes\x64');
+end;
