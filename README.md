@@ -9,7 +9,7 @@ A UI-based program to convert any video file to a GIF using ffmpeg.
 ## Building
 * Clone repo
 * `pip install requirements.txt`
-* `pyinstaller --onefile --windowed --icon=res/appIcon.ico -n anyGIF main.py`
+* `pyinstaller --onefile --windowed --icon=res/appIcon.ico --add-data "bin:bin" --collect-all ffmpeg-python -n anyGIF main.py`
 
    It is really that basic.
 
