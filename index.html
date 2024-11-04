@@ -1,0 +1,169 @@
+<html>
+
+<head>
+    <base href="." target="_blank">
+    <title>anyGIF</title>
+    <link rel="icon" type="image/png"
+        href="/img/favicon.png">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    background: #1a1a1a;
+    color: #ffffff;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.banner {
+    background: #2a2a2a;
+    padding: 20px;
+    border-radius: 15px;
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.banner img {
+    max-width: 100%;
+    height: auto;
+}
+
+.content {
+    text-align: center;
+}
+
+.comparison {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin: 40px 0;
+    padding: 20px;
+    background: #2a2a2a;
+    border-radius: 15px;
+}
+
+.comparison-item {
+    text-align: center;
+}
+
+.comparison-item h3 {
+    margin-bottom: 20px;
+    color: #ffffff;
+}
+
+.comparison-item img {
+    width: 100%;
+    max-width: 500px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+.buttons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 30px;
+}
+
+.button {
+    padding: 15px 30px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
+
+.github {
+    background: #2ea44f;
+    color: white;
+}
+
+.itch {
+    background: #ff2449;
+    color: white;
+}
+
+.features {
+    margin-top: 40px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    padding: 20px;
+}
+
+.feature-card {
+    background: #2a2a2a;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+}
+
+</style>
+</head>
+<body>
+    <div class="container">
+        <div class="banner">
+            <img src="/img/Banner@2x.png" alt="anyGIF logo - red banner with play button and text" width="600" height="150">
+        </div>
+        
+        <div class="content">
+            <h1>Convert Any Video to GIF - Your Way</h1>
+            <p>anyGIF is a powerful desktop application that transforms any video into high-quality GIFs with complete control over the output. Say goodbye to limited online converters!</p>
+            
+            <div class="comparison">
+                <div class="comparison-item">
+                    <h3>The Best Online Converter</h3>
+                    <img src="http://f1dg3t-xyz.duckdns.org/x/gifs/8mb.video-DQn-KfNBqXIE-ezgif.com-optimize%20(1).gif" alt="GIF created by online converter showing lower quality" width="500" height="281" defer>
+                </div>
+                <div class="comparison-item">
+                    <h3>anyGIF</h3>
+                    <img src="http://f1dg3t-xyz.duckdns.org/x/gifs/anyGIF_output.gif" alt="GIF created by anyGIF showing higher quality" width="500" height="281" defer>
+                </div>
+            </div>
+
+            <div class="buttons">
+                <a href="https://github.com/F1dg3tXD/anyGIF" class="button github">
+                    Get Source Code
+                </a>
+                <a href="https://f1dg3t.itch.io/anygif" class="button itch">
+                    Download on itch.io
+                </a>
+            </div>
+
+            <div class="features">
+                <div class="feature-card">
+                    <h3>High Quality Output</h3>
+                    <p>Create crystal clear GIFs that maintain video quality</p>
+                </div>
+                
+                <div class="feature-card">
+                    <h3>Size Options</h3>
+                    <p>Choose between high quality or compressed GIFs based on your needs</p>
+                </div>
+                
+                <div class="feature-card">
+                    <h3>No Length Limits</h3>
+                    <p>Convert videos of any duration without restrictions</p>
+                </div>
+                
+                <div class="feature-card">
+                    <h3>Complete Control</h3>
+                    <p>Adjust frame rate, resolution, and quality settings</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
