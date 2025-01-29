@@ -13,7 +13,7 @@ PyInstaller.__main__.run([
     '--collect-all',
     'ffmpeg-python',
     '--add-binary=bin/ffmpeg:.',  # Include FFmpeg
-    '--osx-bundle-identifier', 'com.yourname.anygif',  # Set identifier
+    '--osx-bundle-identifier', 'com.f1dg3t.anygif',  # Set identifier
     '-n', APP_NAME,
     '--icon=res/appIcon.icns'
 ])
