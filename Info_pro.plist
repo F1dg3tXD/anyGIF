@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+    <dict>
+        <key>CFBundleName</key>
+        <string>anyGIFPro</string> 
+        
+        <key>CFBundleDisplayName</key>
+        <string>anyGIF Pro</string>
+
+        <key>CFBundleIdentifier</key>
+        <string>com.f1dg3t.anygifpro</string>
+
+        <key>CFBundleVersion</key>
+        <string>0.0.4a</string> <!-- App Version -->
+
+        <key>CFBundleShortVersionString</key>
+        <string>0.4a</string>
+
+        <key>CFBundleCopyright</key>
+        <string>© 2025 F1dg3t. All rights reserved.</string>
+
+        <key>NSHumanReadableCopyright</key>
+        <string>© 2025 F1dg3t</string>
+
+        <key>CFBundleGetInfoString</key>
+        <string>anyGIF - Easily convert videos to GIFs.</string>
+
+        <key>CFBundleExecutable</key>
+        <string>anyGIFPro</string>
+
+        <key>CFBundlePackageType</key>
+        <string>APPL</string>
+
+        <key>LSApplicationCategoryType</key>
+        <string>public.app-category.video</string> <!-- App Store Category -->
+        
+        <key>CFBundleIconFile</key>
+        <string>appIcon.icns</string> <!-- App Icon -->
+    </dict>
+</plist>
