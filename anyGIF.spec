@@ -2,14 +2,14 @@
 from PyInstaller.utils.hooks import collect_all
 
 datas = []
-binaries = [('bin/ffmpeg', '.')]
+binaries = [('bin/ffmpeg', 'bin')]
 hiddenimports = []
 tmp_ret = collect_all('ffmpeg-python')
 datas += tmp_ret[0]; binaries += tmp_ret[1]; hiddenimports += tmp_ret[2]
 
 
 a = Analysis(
-    ['main_macos.py'],
+    ['main_linux.py'],
     pathex=[],
     binaries=binaries,
     datas=datas,
@@ -39,7 +39,7 @@ exe = EXE(
     target_arch=None,
     codesign_identity=None,
     entitlements_file=None,
-    icon=['res/appIcon.icns'],
+    icon=['res/appIcon.png'],
 )
 coll = COLLECT(
     exe,
@@ -49,10 +49,4 @@ coll = COLLECT(
     upx=True,
     upx_exclude=[],
     name='anyGIF',
-)
-app = BUNDLE(
-    coll,
-    name='anyGIF.app',
-    icon='res/appIcon.icns',
-    bundle_identifier='com.yourname.anygif',
 )
